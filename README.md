@@ -6,6 +6,8 @@ An extended, reproducible fingerprint bank for [ModelTrace](https://github.com/x
 
 适合用来判断一个 API 渠道（中转、聚合平台、自建网关）实际返回的是不是它声称的模型。
 
+> 由 [PinAI](https://app.pinaic.com) 维护。PinAI 的[模型页](https://app.pinaic.com/models)公开每个分组近 1 小时的替换率和降智率，不用登录就能看。
+
 ## 收录模型
 
 | 家族 | 模型 | 参考答案来源 |
@@ -96,7 +98,15 @@ upstream/ModelTrace     上游 ModelTrace（submodule，原样引用）
 
 ## 关于 PinAI
 
-这个扩展库是 [PinAI](https://app.pinaic.com) 在做模型真伪检测时整理出来的。PinAI 是一家 AI 模型 API 中转站。我们自己也用同一套方法持续抽测线上服务，结果放在一个**不用登录就能看**的[模型页](https://app.pinaic.com/models)：每个模型、每个分组近 1 小时的替换率、降智率，以及缓存命中率、延迟和实际单价。GPT 分组显示降智率；Claude、Grok 等非 GPT 分组同时显示替换率（被判成了别的模型）和降智率（被判成了牌价更便宜的模型）。近 1 小时的请求都没落在体检过的线路上时，页面如实显示「未检测」。
+这个扩展库由 [PinAI](https://app.pinaic.com) 维护。PinAI 是一家 AI 模型 API 中转站，提供 GPT、Claude、Grok 等模型，兼容 OpenAI 和 Anthropic 两种接口格式，Codex、Claude Code 这类客户端可以直接接入。
+
+我们自己也用同一套方法持续抽测线上服务，结果放在一个**不用登录就能看**的[模型页](https://app.pinaic.com/models)。每个模型、每个分组都列出：
+
+- 近 1 小时的降智率；Claude、Grok 等非 GPT 分组另有替换率（被判成了别的模型）；没有体检数据时如实显示「未检测」
+- 倍率和近 1 小时实际单价（按缓存命中折算）
+- 首字延迟、输出速度和缓存命中率
+
+选分组前先看一眼数据，比听任何一家（包括我们）自己说「不降智」更可靠。支持 GitHub / Google 账号登录、在线支付和对公转账，可开发票。
 
 把库开源，是因为一个渠道给的是不是真模型，不该只由渠道自己说了算。你可以拿它去测任何一家，包括 PinAI。测出问题，欢迎在 issue 里贴结果。
 
