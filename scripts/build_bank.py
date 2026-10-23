@@ -75,7 +75,7 @@ bank["source_scope"] = (
     "other families enrolled from first-party providers with the same 36-task suite, see reference/."
 )
 (ROOT / "bank").mkdir(exist_ok=True)
-(ROOT / "bank" / "unified_bank.json").write_text(json.dumps(bank, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+(ROOT / "bank" / "unified_bank.json").write_text(json.dumps(bank, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 model_ids = bank["robust"]["model_order"]
 family = {model["id"]: model["family_name"] for model in bank["models"]}
@@ -128,7 +128,7 @@ for model in model_ids:
     stats = per_model[model]
     mistakes = "、".join(f"{other} ×{count}" for other, count in stats["confused"].most_common()) or "—"
     lines.append(f"| {family[model]} | {model} | {origin[model]} | {share(*stats[1])} | {share(*stats[2])} | {mistakes} |")
-(ROOT / "ACCURACY.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(ROOT / "ACCURACY.md").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 print(json.dumps({
     "models": len(model_ids),
