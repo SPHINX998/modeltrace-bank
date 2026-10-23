@@ -1,0 +1,3 @@
+[submodule "upstream/ModelTrace"]
+	path = upstream/ModelTrace
+	url = https://github.com/xqy2006/ModelTrace
