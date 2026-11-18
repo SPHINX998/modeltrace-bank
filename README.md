@@ -8,6 +8,13 @@ An extended, reproducible fingerprint bank for [ModelTrace](https://github.com/x
 
 > 由 [PinAI](https://app.pinaic.com) 维护。PinAI 的[模型页](https://app.pinaic.com/models)公开每个分组近 1 小时的替换率和降智率，不用登录就能看。
 
+不想自己跑脚本，可以直接用现成的两个入口（判定方法与本仓库相同）：
+
+- **在线检测** <https://check.pinaic.com>：不用登录，输入中转地址、API Key 和模型，测模型有没有被掉包或降智、缓存有没有生效、这一趟花了多少。
+- **本机工具** [degrade-check](https://github.com/SPHINX998/degrade-check)：读取本机 Codex、Claude、CC Switch 的配置一键测，密钥只发给你自己配置的接口地址；源码公开，可以自己编译核对。
+
+Prefer not to run scripts? Use the hosted checker at <https://check.pinaic.com> (no sign-in) or the local tool [degrade-check](https://github.com/SPHINX998/degrade-check), which reads your Codex / Claude / CC Switch config and tests in one click.
+
 ## 收录模型
 
 | 家族 | 模型 | 参考答案来源 |
